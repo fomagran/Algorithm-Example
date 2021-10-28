@@ -2,43 +2,57 @@ var numbers:[Int] = [9,1,8,3,2,10,4,7,5,6]
 
 extension Array where Element == Int{
     
-    mutating func sortByQuick() -> [Element] {
-        return divide(self)
+    enum Pivot:Int {
+        case first
+        case middle
+        case last
+        case random
+        case median
     }
     
-    func divide(_ list:[Element]) -> [Element] {
+    mutating func sortByQuick(pivotType:Pivot) -> [Element] {
+        return divide(self,pivotType)
+    }
+    
+    func divide(_ list:[Element],_ pivotType:Pivot) -> [Element] {
         if list.count < 2 { return list }
         var newList:[Element] = list
-        let pivotIndex:Int = newList.count/2-1
-        var leftIndex:Int = 0
-        var rightIndex:Int = newList.count-1
-        var isLeft:Bool = true
-        
-        while leftIndex < rightIndex {
-            if isLeft {
-                if newList[leftIndex] < newList[pivotIndex] {
-                    leftIndex += 1
-                }else {
-                    newList.swapAt(pivotIndex, leftIndex)
-                }
-            }else {
-                if newList[rightIndex] > newList[pivotIndex] {
-                    rightIndex -= 1
-                }else {
-                    newList.swapAt(pivotIndex, rightIndex)
-                }
-            }
-            isLeft.toggle()
-        }
-     
-        let left:[Element] = Array(newList[0...leftIndex])
-        let right:[Element] = Array(newList[leftIndex+1..<newList.count])
-        return merge(divide(left),divide(right))
+        let pivotIndex:Int = setPivotIndexByType(pivotType, list: &newList)
+        let pivot = newList[pivotIndex]
+        let left = newList.filter { $0 < pivot }
+        let right = newList.filter { $0 > pivot}
+        return merge(divide(left,pivotType),divide(right,pivotType),pivot:pivot)
     }
     
-    func merge(_ left:[Element],_ right:[Element]) -> [Element] {
-        return left + right
+    func merge(_ left:[Element],_ right:[Element],pivot:Int) -> [Element] {
+        return left + [pivot] + right
+    }
+    
+    func setPivotIndexByType(_ pivotType:Pivot,list:inout [Element]) -> Int {
+        switch pivotType {
+        case .first:
+            return  0
+        case .middle:
+            return list.count/2-1
+        case .last:
+            return list.count-1
+        case .random:
+            return (0..<list.count).randomElement() ?? 0
+        case .median:
+            return setMedianPivot(list: &list)
+        }
+    }
+    
+     func setMedianPivot(list:inout [Element]) -> Int {
+        let first:Int = list[0]
+        let middle:Int = list[list.count/2]
+        let last:Int = list[list.count-1]
+        let sort:[Int] = [first,middle,last].sorted(by: <)
+        list[0] = sort[0]
+        list[list.count/2] = sort[1]
+        list[list.count-1] = sort[2]
+        return list.count/2
     }
 }
 
-numbers.sortByQuick()
+numbers.sortByQuick(pivotType: .random)
