@@ -6,4 +6,6 @@
 
 - [합병 정렬(Merge Sort)란? (feat. Swift)](https://fomaios.tistory.com/entry/Algorithm-%ED%95%A9%EB%B3%91-%EC%A0%95%EB%A0%ACMerge-Sort%EB%9E%80-feat-Swift?category=898208)   
 
+- [힙 정렬(HeapSort)이란? (feat.Swift)](https://fomaios.tistory.com/entry/Algorithm-%ED%9E%99%EC%A0%95%EB%A0%ACHeapSort%EC%9D%B4%EB%9E%80-featSwift)
+
 - [퀵 정렬(Quick Sort)란? (feat. Swift)](https://fomaios.tistory.com/entry/Algorithm-%ED%80%B5-%EC%A0%95%EB%A0%ACQuick-Sort%EB%9E%80-feat-Swift?category=898208)   
