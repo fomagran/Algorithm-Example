@@ -48,14 +48,7 @@ extension Array where Element == Int{
     }
 }
 
-func processTime(blockFunction: () -> ()) {
-    let startTime = CFAbsoluteTimeGetCurrent()
-    blockFunction()
-    let processTime = CFAbsoluteTimeGetCurrent() - startTime
-    print("걸린 시간 = \(processTime)")
-}
- 
-processTime {
-    numbers.sortByMerge()
-}
-print(comparisonCount)
+let startTime = CFAbsoluteTimeGetCurrent()
+//Sort 메서드 실행
+let processTime = CFAbsoluteTimeGetCurrent() - startTime
+print("걸린 시간 = \(processTime), 비교 횟수 = \(comparisonCount) ")

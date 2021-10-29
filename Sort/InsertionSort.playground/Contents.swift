@@ -31,14 +31,7 @@ extension Array where Element == Int {
     }
 }
 
-func processTime(blockFunction: () -> ()) {
-    let startTime = CFAbsoluteTimeGetCurrent()
-    blockFunction()
-    let processTime = CFAbsoluteTimeGetCurrent() - startTime
-    print("걸린 시간 = \(processTime)")
-}
- 
-processTime {
-    numbers.sortByInsertion(nil)
-}
-print(comparisonCount)
+let startTime = CFAbsoluteTimeGetCurrent()
+numbers.sortByInsertion(nil)
+let processTime = CFAbsoluteTimeGetCurrent() - startTime
+print("걸린 시간 = \(processTime), 비교 횟수 = \(comparisonCount) ")

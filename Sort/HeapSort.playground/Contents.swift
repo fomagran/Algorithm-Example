@@ -90,50 +90,42 @@ struct MaxHeap {
     }
     
     //node를 삭제해줄 메서드
-    mutating func remove()  {
+    mutating func remove() -> Int?  {
         //만약 nodes가 비어있다면 삭제하지 않습니다.
         if nodes.isEmpty {
-            return
+            return nil
         }
         //루트와 리프의 값으 바꿔줍니다.
         nodes.swapAt(0, nodes.count - 1)
-        //리프값을 삭제해줍니다.
-        nodes.removeLast()
         //히피파이를 진행합니다.
         heapifyDown()
+        //리프값을 삭제해줍니다.
+        return nodes.removeLast()
     }
 }
-
-var numbers:[Int] = (0...1023).map{$0}.shuffled()
-var comparisonCount:Int = 0
 
 extension Array where Element == Int{
     func sortByHeap() -> [Element] {
         var heap = MaxHeap(nodes:self)
         var newList:[Int] = []
         for _ in heap.nodes {
-            //heap의 첫 번째(가장 큰 값)
-            if let max = heap.nodes.first {
-                //가장 첫 번째로 삽입해줍니다.
+            //heap의 첫 번째(가장 큰 값)를 삭제해줍니다.
+            if let max = heap.remove() {
+                //가장 첫 번째를 newList에 삽입해줍니다.
                 newList.insert(max, at: 0)
             }
-            //힙의 가장 첫 번째 삭제
-            heap.remove()
         }
         return newList
     }
 }
 
-func processTime(blockFunction: () -> ()) {
-    let startTime = CFAbsoluteTimeGetCurrent()
-    blockFunction()
-    let processTime = CFAbsoluteTimeGetCurrent() - startTime
-    print("걸린 시간 = \(processTime)")
-}
- 
-processTime {
-    numbers.sortByHeap()
-}
-print(comparisonCount)
+var numbers:[Int] = (0...1023).map{$0}.shuffled()
+var comparisonCount:Int = 0
+
+let startTime = CFAbsoluteTimeGetCurrent()
+numbers.sortByHeap()
+let processTime = CFAbsoluteTimeGetCurrent() - startTime
+print("걸린 시간 = \(processTime), 비교 횟수 = \(comparisonCount) ")
+
 
 
