@@ -25,7 +25,7 @@
 
 ## Mathematics ⚖️
 
-- [순열(Permutation)이란? (feat.Swift)](https://fomaios.tistory.com/entry/Algorithm-%EC%88%9C%EC%97%B4Permutation%EC%9D%B4%EB%9E%80?category=898208).   
+- [순열(Permutation)이란? (feat.Swift)](https://fomaios.tistory.com/entry/Algorithm-%EC%88%9C%EC%97%B4Permutation%EC%9D%B4%EB%9E%80?category=898208)    
 
-- [조합(Combination)이란? (feat.Swift)](https://fomaios.tistory.com/entry/Algorithm-%EC%A1%B0%ED%95%A9Combination%EC%9D%B4%EB%9E%80?category=898208).  
+- [조합(Combination)이란? (feat.Swift)](https://fomaios.tistory.com/entry/Algorithm-%EC%A1%B0%ED%95%A9Combination%EC%9D%B4%EB%9E%80?category=898208)   
 
