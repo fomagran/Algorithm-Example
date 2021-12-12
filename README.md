@@ -29,3 +29,5 @@
 
 - [조합(Combination)이란? (feat.Swift)](https://fomaios.tistory.com/entry/Algorithm-%EC%A1%B0%ED%95%A9Combination%EC%9D%B4%EB%9E%80?category=898208)   
 
+## Optimization 💡
+- [동적계획법(Dynamic Programming)이란?](https://fomaios.tistory.com/m/entry/Algorithm-%EB%8F%99%EC%A0%81-%EA%B3%84%ED%9A%8D%EB%B2%95Dynamic-Programming%EC%9D%B4%EB%9E%80)
